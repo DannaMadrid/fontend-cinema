@@ -16,12 +16,12 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-4"><label for="">Id:</label></div>
-                                <div clas="col-8"><!--<input type="text" disabled [{ngModel}]="theater.id">--></div>
+                                <div clas="col-8"><input type="text" class="form-control" [(ngModel)]="theater.id" disabled></div>
                             </div>
                             <div class="row">
-                                <div class="col-4"><label for="">Ubicacion</label></div>
-                                <div clas="col-8"> <input type="number" disabled class="form-control" [(ngModel)]="theater.location" formControlName="location">
-                                    <button class="btn btn success btn-block" *ngIf="mode==2" (click)="create()" >Crear</button>
+                                <div class="col-4"><label for="">Ubicación:</label></div>
+                                <div clas="col-8"> 
+                                    <input type="text" class="form-control" [(ngModel)]="theater.location" [disabled]="mode==1" formControlName="location">
                                     <div
                                     *ngIf="getTheFormGroup.location.errors && (getTheFormGroup.location.dirty || getTheFormGroup.location.touched || trySend)">
                                     <strong *ngIf="getTheFormGroup.location.errors.required" class="msnError">Requerido</strong>
@@ -32,14 +32,22 @@
                             <div class="row">
                                 <div class="col-4"><label for="">Capacidad</label></div>
                                 <div clas="col-8">
-                                    <input type="number" disabled class="form-control" [(ngModel)]="theater.capacity" 
-                                    formControlName="capacity"></div>
+                                    <input type="number" class="form-control" [(ngModel)]="theater.capacity" [disabled]="mode==1" formControlName="capacity"></div>
                                 <div
                                 *ngIf="getTheFormGroup.capacity.errors && (getTheFormGroup.capacity.dirty || getTheFormGroup.capacity.touched || trySend)">
                                 <strong *ngIf="getTheFormGroup.capacity.errors.min" class="msnError">Valor mínimo debe ser 1</strong>
                                 <strong *ngIf="getTheFormGroup.capacity.errors.max" class="msnError">Valor máximo 100 </strong>
                                 <strong *ngIf="getTheFormGroup.capacity.errors.required" class="msnError">Requerido</strong>
                               </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    
+                                </div>
+                                <div clas="col-8">
+                                    <button *ngIf="mode==2" (click)="create()" type="button" class="btn btn-primary btn-block">Crear</button>
+                                    <button *ngIf="mode==3" (click)="update()" type="button" class="btn btn-primary btn-block">Actualizar</button>
+                                </div>
                             </div>
                         </div>
                     </div>

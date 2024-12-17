@@ -17,7 +17,7 @@ export class SeatsService {
       return this.http.delete<Seats>(`${environment.url_ms_cinema}/seats/${id}`);
     }
     view(id:number): Observable<Seats> {
-      return this.http.get<Seats>(`${environment.url_ms_cinema}/seats/${id}`);
+      return this.http.get<Seats>(`${environment.url_ms_cinema}/seats?/${id}`);
     }
     create(newtheater: Seats): Observable<Seats> {
       return this.http.post<Seats>(`${environment.url_ms_cinema}/seats`,newtheater);

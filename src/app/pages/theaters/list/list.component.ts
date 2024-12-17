@@ -12,7 +12,8 @@ import Swal from 'sweetalert2';
 export class ListComponent implements OnInit {
   theaters:Theater[]
 
-  constructor(private theatersService:TheaterService, private router:Router ) { 
+  constructor(private theatersService:TheaterService,
+     private router:Router ) { 
     this.theaters=[]
   }
 

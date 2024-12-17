@@ -60,7 +60,7 @@ export class ManageComponent implements OnInit {
   create(){
     this.theaterService.create(this.theater).subscribe(data =>{
       Swal.fire("creado", "Se ha creado exitosamente","success")
-      this.router.navigate([`theaters/list`])
+      this.router.navigate(["theaters/list"])
     })
   }
 

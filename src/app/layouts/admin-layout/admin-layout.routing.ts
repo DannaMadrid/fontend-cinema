@@ -5,6 +5,7 @@ import { IconsComponent } from '../../pages/icons/icons.component';
 import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
+import { AuthenticatedGuard } from 'src/app/guards/authenticated.guard';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -14,6 +15,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'maps',           component: MapsComponent },
     {
         path: 'theaters', //Path que carga la pagina
+        canActivate:[AuthenticatedGuard],
+        
         //component: AuthLayoutComponent, se desactiva ya que no se activa solo un componente si no todo un modulo
             loadChildren: () => import('src/app/pages/theaters/theaters.module').then(m => m.TheatersModule)
     }
